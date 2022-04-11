@@ -1,0 +1,541 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: url("../assets/background.png") no-repeat center center fixed;
+  background-size: cover;
+  background-color: #1a252b;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.loadInAnimation {
+  -webkit-animation: loadTransition 1.6s;
+          animation: loadTransition 1.6s;
+}
+
+.gameWrapper {
+  position: relative;
+}
+
+.playerHeader,
+.dealerHeader {
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 8px #000000;
+}
+
+.header {
+  color: white;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 5rem;
+  text-shadow: 2px 2px 8px #000000;
+}
+
+.btnWrapper {
+  text-align: center;
+}
+
+.btn {
+  background-color: black;
+  width: 14rem;
+  height: 4rem;
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 15px;
+  border: 2px solid greenyellow;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0px 0px 15px 0.5px greenyellow;
+          box-shadow: 0px 0px 15px 0.5px greenyellow;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+@media (min-width: 900px) {
+  .btn {
+    margin: 10px;
+  }
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: greenyellow;
+  color: black;
+  -webkit-box-shadow: 0px 0px 20px 2px greenyellow;
+          box-shadow: 0px 0px 20px 2px greenyellow;
+}
+
+.btn:active {
+  background-color: greenyellow;
+  color: black;
+  -webkit-box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px greenyellow;
+          box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px greenyellow;
+  font-size: 1.9rem;
+}
+
+.gameUI {
+  position: relative;
+}
+
+.rectangle {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 280px;
+  width: 100vw;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  text-align: center;
+}
+
+.cardOutlineWrapper {
+  position: relative;
+  text-align: center;
+}
+
+.dealerArea {
+  position: absolute;
+  top: 160px;
+}
+
+@media (min-width: 900px) {
+  .dealerArea {
+    top: 140px;
+  }
+}
+
+.playerArea {
+  position: absolute;
+  top: 390px;
+}
+
+@media (min-width: 900px) {
+  .playerArea {
+    top: 370px;
+  }
+}
+
+.dealerArea,
+.playerArea {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 300px;
+}
+
+.cardOutlinePlayer,
+.cardOutlineDealer {
+  margin: 20px;
+}
+
+@media (min-width: 900px) {
+  .cardOutlinePlayer,
+  .cardOutlineDealer {
+    margin: 0px;
+  }
+}
+
+.cardOutlineDealer {
+  position: relative;
+  height: 132px;
+  width: 86px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px solid white;
+  border-radius: 1rem;
+}
+
+.cardOutlinePlayer {
+  position: relative;
+  height: 132px;
+  width: 86px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px solid white;
+  border-radius: 1rem;
+}
+
+.playerHandVal,
+.dealerHandVal {
+  height: 70px;
+  width: 65px;
+  margin: 50px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px solid white;
+  border-radius: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  font-size: 2.5rem;
+}
+
+.uiText {
+  margin: auto;
+  color: white;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .uiText {
+    font-size: 3rem;
+  }
+}
+
+.errorText {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ff4a4a;
+}
+
+input[type="text"] {
+  height: 50px;
+  width: 220px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.uiBox {
+  position: absolute;
+  height: 30px;
+  width: 90vw;
+  border-radius: 1rem;
+  border: 2px solid orange;
+  background-color: black;
+  color: white;
+  margin-top: 1rem;
+  margin-right: 2rem;
+  padding: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+@media (min-width: 900px) {
+  .uiBox {
+    width: 200px;
+  }
+}
+
+.currentBet {
+  top: -5px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+@media (min-width: 900px) {
+  .currentBet {
+    top: 70px;
+    left: 20%;
+  }
+}
+
+.totalBalance {
+  top: 70px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+@media (min-width: 900px) {
+  .totalBalance {
+    top: 70px;
+    left: 80%;
+  }
+}
+
+.dealerHand,
+.playerHand {
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  overflow: hidden;
+  height: 132px;
+  width: 100vw;
+}
+
+.dealerHand {
+  position: absolute;
+  top: 255px;
+}
+
+@media (min-width: 900px) {
+  .dealerHand {
+    top: 220px;
+  }
+}
+
+.playerHand {
+  position: absolute;
+  top: 485px;
+}
+
+@media (min-width: 900px) {
+  .playerHand {
+    top: 450px;
+  }
+}
+
+.cardDealer,
+.cardPlayer {
+  position: absolute;
+  height: 132px;
+  width: 86px;
+  left: 51%;
+}
+
+.btnFlexbox {
+  position: absolute;
+  top: 640px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (min-width: 900px) {
+  .btnFlexbox {
+    top: 630px;
+  }
+}
+
+.gameBtnWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  width: 100vw;
+}
+
+.gameBtn {
+  padding: 10px;
+  margin: 10px;
+  color: white;
+  border-radius: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 150px;
+  background-color: black;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+@media (min-width: 900px) {
+  .gameBtn {
+    margin: 20px;
+    width: 220px;
+    font-size: 1.7rem;
+  }
+}
+
+.hitBtn {
+  border: 2px solid #09ff00;
+  -webkit-box-shadow: 0px 0px 15px 0.5px #09ff00;
+          box-shadow: 0px 0px 15px 0.5px #09ff00;
+}
+
+.standBtn {
+  border: 2px solid red;
+  -webkit-box-shadow: 0px 0px 15px 0.5px red;
+          box-shadow: 0px 0px 15px 0.5px red;
+}
+
+.splitBtn {
+  position: absolute;
+  top: 350px;
+  left: 80%;
+  border: 2px solid blue;
+  -webkit-box-shadow: 0px 0px 15px 0.5px blue;
+          box-shadow: 0px 0px 15px 0.5px blue;
+}
+
+.ddBtn {
+  border: 2px solid blueviolet;
+  -webkit-box-shadow: 0px 0px 15px 0.5px blueviolet;
+          box-shadow: 0px 0px 15px 0.5px blueviolet;
+}
+
+.hitBtn:hover,
+.hitBtn:focus {
+  background-color: #09ff00;
+  color: black;
+  -webkit-box-shadow: 0px 0px 20px 2px #09ff00;
+          box-shadow: 0px 0px 20px 2px #09ff00;
+}
+
+.hitBtn:active {
+  background-color: #09ff00;
+  color: black;
+  -webkit-box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px #09ff00;
+          box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px #09ff00;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 900px) {
+  .hitBtn:active {
+    font-size: 1.5rem;
+  }
+}
+
+.standBtn:hover,
+.standBtn:focus {
+  background-color: red;
+  color: black;
+  -webkit-box-shadow: 0px 0px 20px 2px red;
+          box-shadow: 0px 0px 20px 2px red;
+}
+
+.standBtn:active {
+  background-color: red;
+  color: black;
+  -webkit-box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px red;
+          box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px red;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 900px) {
+  .standBtn:active {
+    font-size: 1.5rem;
+  }
+}
+
+.splitBtn:hover,
+.splitBtn:focus {
+  background-color: blue;
+  color: black;
+  -webkit-box-shadow: 0px 0px 20px 2px blue;
+          box-shadow: 0px 0px 20px 2px blue;
+}
+
+.splitBtn:active {
+  background-color: blue;
+  color: black;
+  -webkit-box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px blue;
+          box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px blue;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 900px) {
+  .splitBtn:active {
+    font-size: 1.5rem;
+  }
+}
+
+.ddBtn:hover,
+.ddBtn:focus {
+  background-color: blueviolet;
+  color: black;
+  -webkit-box-shadow: 0px 0px 20px 2px blueviolet;
+          box-shadow: 0px 0px 20px 2px blueviolet;
+}
+
+.ddBtn:active {
+  background-color: blueviolet;
+  color: black;
+  -webkit-box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px blueviolet;
+          box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px blueviolet;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 900px) {
+  .ddBtn:active {
+    font-size: 1.5rem;
+  }
+}
+
+.removeTransition {
+  -webkit-animation: fadeout 1s;
+          animation: fadeout 1s;
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes loadTransition {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes loadTransition {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/*# sourceMappingURL=main.css.map */

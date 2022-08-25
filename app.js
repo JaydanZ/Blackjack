@@ -1,6 +1,6 @@
 /*
- *	FILE			:app.js
- *	PROJECT			:JS Blackjack
+ *	FILE			    :app.js
+ *	PROJECT			  :JS Blackjack
  *	PROGRAMMER		:Jaydan Zabar
  *	FIRST VERSION	:2021-05-10
  *	DESCRIPTION		:The purpose of this file is to house the functionality for the game "blackjack". More specifically, it contains a betting system, the abilities

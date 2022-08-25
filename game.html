@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./CSS/main.css" />
     <title>JS Blackjack</title>
+    <meta
+      name="description"
+      content="A web application that simulates the casino banking game, Blackjack."
+    />
   </head>
   <body>
-    <div class="uiBox totalBalance loadInAnimation">
-      <label id="playerBalance">Total Balance: </label>
-    </div>
+    <div class="root">
+      <div class="uiBox totalBalance loadInAnimation">
+        <label id="playerBalance">Total Balance: </label>
+      </div>
 
-    <div class="uiBox currentBet">
-      <label id="betText">User bet: </label>
+      <div class="uiBox currentBet loadInAnimation">
+        <label id="betText">User bet: </label>
+      </div>
     </div>
-    <br />
     <div class="gameWrapper loadInAnimation">
-      <br />
       <div class="dealerArea">
         <div class="dealerHeader">
           <label>Dealer</label>
@@ -27,7 +31,6 @@
         </div>
       </div>
       <div id="dealerHand" class="dealerHand"></div>
-      <br />
       <div class="playerArea">
         <div class="playerHeader">
           <label>Player</label>
@@ -38,15 +41,11 @@
         </div>
       </div>
       <div id="playerHand" class="playerHand"></div>
-      <br />
-      <br />
       <div id="gameUI" class="gameUI"></div>
       <div class="btnFlexbox">
-        <div class="gameBtnWrapper">
-          <button class="gameBtn hitBtn" id="hitBTN">Hit</button>
-          <button class="gameBtn standBtn" id="standBTN">Stand</button>
-          <button class="gameBtn ddBtn" id="ddBTN">Double Down</button>
-        </div>
+        <button class="gameBtn hitBtn" id="hitBTN">Hit</button>
+        <button class="gameBtn standBtn" id="standBTN">Stand</button>
+        <button class="gameBtn ddBtn" id="ddBTN">Double Down</button>
       </div>
     </div>
     <script src="./app.js"></script>

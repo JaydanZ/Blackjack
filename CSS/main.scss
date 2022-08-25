@@ -10,19 +10,56 @@ html {
   -o-background-size: cover;
   background-size: cover;
   background-color: #1a252b;
+  height: 100%;
+  width: 100%;
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
+  min-height: 100%;
+  min-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
 }
 
-$desktop: 900px;
+$min-desktop: 900px;
+$max-desktop: 1920px;
 
-@mixin desktop {
-  @media (min-width: #{$desktop}) {
+$dealer-pos: 80px;
+$dealer-hand: calc(#{$dealer-pos} + 80px);
+$dealer-mobile-pos: 40px;
+$dealer-hand-mobile: calc(#{$dealer-mobile-pos} + 100px);
+
+$player-pos: 320px;
+$player-hand: calc(#{$player-pos} + 80px);
+$player-mobile-pos: 290px;
+$player-hand-mobile: calc(#{$player-mobile-pos} + 100px);
+
+@mixin min-desktop {
+  @media (min-width: #{$min-desktop}) {
     @content;
   }
+}
+
+@mixin max-desktop {
+  @media (min-width: #{$max-desktop}) {
+    @content;
+  }
+}
+
+.root {
+  @include min-desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: max-content;
+  }
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
 }
 
 .loadInAnimation {
@@ -55,7 +92,7 @@ $desktop: 900px;
 }
 
 .btn {
-  @include desktop {
+  @include min-desktop {
     margin: 10px;
   }
   background-color: black;
@@ -112,19 +149,19 @@ $desktop: 900px;
 }
 
 .dealerArea {
-  @include desktop {
-    top: 140px;
+  @include min-desktop {
+    top: $dealer-pos;
   }
   position: absolute;
-  top: 160px;
+  top: $dealer-mobile-pos;
 }
 
 .playerArea {
-  @include desktop {
-    top: 370px;
+  @include min-desktop {
+    top: $player-pos;
   }
   position: absolute;
-  top: 390px;
+  top: $player-mobile-pos;
 }
 
 .dealerArea,
@@ -139,7 +176,7 @@ $desktop: 900px;
 
 .cardOutlinePlayer,
 .cardOutlineDealer {
-  @include desktop {
+  @include min-desktop {
     margin: 0px;
   }
 
@@ -180,7 +217,7 @@ $desktop: 900px;
 }
 
 .uiText {
-  @include desktop {
+  @include min-desktop {
     font-size: 3rem;
   }
   margin: auto;
@@ -212,18 +249,15 @@ input[type="text"] {
 }
 
 .uiBox {
-  @include desktop {
+  @include min-desktop {
     width: 200px;
   }
-  position: absolute;
-  height: 30px;
-  width: 90vw;
+  height: 20px;
   border-radius: 1rem;
   border: 2px solid orange;
   background-color: black;
   color: white;
-  margin-top: 1rem;
-  margin-right: 2rem;
+  margin: 10px;
   padding: 1rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1rem;
@@ -231,23 +265,9 @@ input[type="text"] {
 }
 
 .currentBet {
-  @include desktop {
-    top: 70px;
-    left: 20%;
-  }
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .totalBalance {
-  @include desktop {
-    top: 70px;
-    left: 80%;
-  }
-  top: 70px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .dealerHand,
@@ -259,19 +279,19 @@ input[type="text"] {
 }
 
 .dealerHand {
-  @include desktop {
-    top: 220px;
+  @include min-desktop {
+    top: $dealer-hand;
   }
   position: absolute;
-  top: 255px;
+  top: $dealer-hand-mobile;
 }
 
 .playerHand {
-  @include desktop {
-    top: 450px;
+  @include min-desktop {
+    top: $player-hand;
   }
   position: absolute;
-  top: 485px;
+  top: $player-hand-mobile;
 }
 
 .cardDealer,
@@ -283,51 +303,55 @@ input[type="text"] {
 }
 
 .btnFlexbox {
-  @include desktop {
-    top: 630px;
+  @include min-desktop {
+    top: 70vh;
   }
-  position: absolute;
-  top: 640px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-}
-
-.gameBtnWrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
+  position: fixed;
+  bottom: 0%;
   width: 100vw;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .gameBtn {
-  @include desktop {
+  @include min-desktop {
     margin: 20px;
     width: 220px;
     font-size: 1.7rem;
+    background-color: black;
+    margin: 10px;
+    border-radius: 1rem;
   }
   padding: 10px;
-  margin: 10px;
+  height: 80px;
   color: white;
-  border-radius: 1rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1rem;
   font-weight: bold;
-  width: 150px;
-  background-color: black;
   transition: 0.2s;
+  width: 100%;
+  border: none;
 }
 
 .hitBtn {
-  border: 2px solid #09ff00;
-  box-shadow: 0px 0px 15px 0.5px #09ff00;
+  @include min-desktop {
+    border: 2px solid #09ff00;
+    box-shadow: 0px 0px 15px 0.5px #09ff00;
+    background-color: #02b43d;
+  }
+  background-color: #00b661;
 }
 
 .standBtn {
-  border: 2px solid red;
-  box-shadow: 0px 0px 15px 0.5px red;
+  @include min-desktop {
+    border: 2px solid red;
+    box-shadow: 0px 0px 15px 0.5px red;
+    background-color: #ce3e3e;
+  }
+  background-color: #e44444;
 }
 
 .splitBtn {
@@ -339,41 +363,49 @@ input[type="text"] {
 }
 
 .ddBtn {
-  border: 2px solid blueviolet;
-  box-shadow: 0px 0px 15px 0.5px blueviolet;
+  @include min-desktop {
+    border: 2px solid blueviolet;
+    box-shadow: 0px 0px 15px 0.5px blueviolet;
+    background-color: rgb(122, 37, 201);
+  }
+  background-color: blueviolet;
 }
 
 .hitBtn:hover,
 .hitBtn:focus {
-  background-color: #09ff00;
-  color: black;
-  box-shadow: 0px 0px 20px 2px #09ff00;
+  @include min-desktop {
+    background-color: #09ff00;
+    color: black;
+    box-shadow: 0px 0px 20px 2px #09ff00;
+  }
 }
 .hitBtn:active {
-  @include desktop {
+  @include min-desktop {
     font-size: 1.5rem;
+    background-color: #09ff00;
+    color: black;
+    box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px #09ff00;
+    font-size: 0.9rem;
   }
-  background-color: #09ff00;
-  color: black;
-  box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px #09ff00;
-  font-size: 0.9rem;
 }
 
 .standBtn:hover,
 .standBtn:focus {
-  background-color: red;
-  color: black;
-  box-shadow: 0px 0px 20px 2px red;
+  @include min-desktop {
+    background-color: red;
+    color: black;
+    box-shadow: 0px 0px 20px 2px red;
+  }
 }
 
 .standBtn:active {
-  @include desktop {
+  @include min-desktop {
     font-size: 1.5rem;
+    background-color: red;
+    color: black;
+    box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px red;
+    font-size: 0.9rem;
   }
-  background-color: red;
-  color: black;
-  box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px red;
-  font-size: 0.9rem;
 }
 
 .splitBtn:hover,
@@ -384,7 +416,7 @@ input[type="text"] {
 }
 
 .splitBtn:active {
-  @include desktop {
+  @include min-desktop {
     font-size: 1.5rem;
   }
   background-color: blue;
@@ -395,19 +427,21 @@ input[type="text"] {
 
 .ddBtn:hover,
 .ddBtn:focus {
-  background-color: blueviolet;
-  color: black;
-  box-shadow: 0px 0px 20px 2px blueviolet;
+  @include min-desktop {
+    background-color: blueviolet;
+    color: black;
+    box-shadow: 0px 0px 20px 2px blueviolet;
+  }
 }
 
 .ddBtn:active {
-  @include desktop {
+  @include min-desktop {
     font-size: 1.5rem;
+    background-color: blueviolet;
+    color: black;
+    box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px blueviolet;
+    font-size: 0.9rem;
   }
-  background-color: blueviolet;
-  color: black;
-  box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px blueviolet;
-  font-size: 0.9rem;
 }
 
 .removeTransition {

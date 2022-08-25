@@ -7,11 +7,51 @@ html {
   background: url("../assets/background.png") no-repeat center center fixed;
   background-size: cover;
   background-color: #1a252b;
+  height: 100%;
+  width: 100%;
 }
 
 body {
+  min-height: 100%;
+  min-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+.root {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100vw;
-  height: 100vh;
+}
+
+@media (min-width: 900px) {
+  .root {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100vw;
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+  }
 }
 
 .loadInAnimation {
@@ -122,23 +162,23 @@ body {
 
 .dealerArea {
   position: absolute;
-  top: 160px;
+  top: 40px;
 }
 
 @media (min-width: 900px) {
   .dealerArea {
-    top: 140px;
+    top: 80px;
   }
 }
 
 .playerArea {
   position: absolute;
-  top: 390px;
+  top: 290px;
 }
 
 @media (min-width: 900px) {
   .playerArea {
-    top: 370px;
+    top: 320px;
   }
 }
 
@@ -239,15 +279,12 @@ input[type="text"] {
 }
 
 .uiBox {
-  position: absolute;
-  height: 30px;
-  width: 90vw;
+  height: 20px;
   border-radius: 1rem;
   border: 2px solid orange;
   background-color: black;
   color: white;
-  margin-top: 1rem;
-  margin-right: 2rem;
+  margin: 10px;
   padding: 1rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1rem;
@@ -257,34 +294,6 @@ input[type="text"] {
 @media (min-width: 900px) {
   .uiBox {
     width: 200px;
-  }
-}
-
-.currentBet {
-  top: -5px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-}
-
-@media (min-width: 900px) {
-  .currentBet {
-    top: 70px;
-    left: 20%;
-  }
-}
-
-.totalBalance {
-  top: 70px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-}
-
-@media (min-width: 900px) {
-  .totalBalance {
-    top: 70px;
-    left: 80%;
   }
 }
 
@@ -300,23 +309,23 @@ input[type="text"] {
 
 .dealerHand {
   position: absolute;
-  top: 255px;
+  top: calc(40px + 100px);
 }
 
 @media (min-width: 900px) {
   .dealerHand {
-    top: 220px;
+    top: calc(80px + 80px);
   }
 }
 
 .playerHand {
   position: absolute;
-  top: 485px;
+  top: calc(290px + 100px);
 }
 
 @media (min-width: 900px) {
   .playerHand {
-    top: 450px;
+    top: calc(320px + 80px);
   }
 }
 
@@ -329,14 +338,22 @@ input[type="text"] {
 }
 
 .btnFlexbox {
-  position: absolute;
-  top: 640px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  position: fixed;
+  bottom: 0%;
+  width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -344,35 +361,21 @@ input[type="text"] {
 
 @media (min-width: 900px) {
   .btnFlexbox {
-    top: 630px;
+    top: 70vh;
   }
-}
-
-.gameBtnWrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  position: relative;
-  width: 100vw;
 }
 
 .gameBtn {
   padding: 10px;
-  margin: 10px;
+  height: 80px;
   color: white;
-  border-radius: 1rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1rem;
   font-weight: bold;
-  width: 150px;
-  background-color: black;
   -webkit-transition: 0.2s;
   transition: 0.2s;
+  width: 100%;
+  border: none;
 }
 
 @media (min-width: 900px) {
@@ -380,19 +383,36 @@ input[type="text"] {
     margin: 20px;
     width: 220px;
     font-size: 1.7rem;
+    background-color: black;
+    margin: 10px;
+    border-radius: 1rem;
   }
 }
 
 .hitBtn {
-  border: 2px solid #09ff00;
-  -webkit-box-shadow: 0px 0px 15px 0.5px #09ff00;
-          box-shadow: 0px 0px 15px 0.5px #09ff00;
+  background-color: #00b661;
+}
+
+@media (min-width: 900px) {
+  .hitBtn {
+    border: 2px solid #09ff00;
+    -webkit-box-shadow: 0px 0px 15px 0.5px #09ff00;
+            box-shadow: 0px 0px 15px 0.5px #09ff00;
+    background-color: #02b43d;
+  }
 }
 
 .standBtn {
-  border: 2px solid red;
-  -webkit-box-shadow: 0px 0px 15px 0.5px red;
-          box-shadow: 0px 0px 15px 0.5px red;
+  background-color: #e44444;
+}
+
+@media (min-width: 900px) {
+  .standBtn {
+    border: 2px solid red;
+    -webkit-box-shadow: 0px 0px 15px 0.5px red;
+            box-shadow: 0px 0px 15px 0.5px red;
+    background-color: #ce3e3e;
+  }
 }
 
 .splitBtn {
@@ -405,52 +425,57 @@ input[type="text"] {
 }
 
 .ddBtn {
-  border: 2px solid blueviolet;
-  -webkit-box-shadow: 0px 0px 15px 0.5px blueviolet;
-          box-shadow: 0px 0px 15px 0.5px blueviolet;
+  background-color: blueviolet;
 }
 
-.hitBtn:hover,
-.hitBtn:focus {
-  background-color: #09ff00;
-  color: black;
-  -webkit-box-shadow: 0px 0px 20px 2px #09ff00;
-          box-shadow: 0px 0px 20px 2px #09ff00;
+@media (min-width: 900px) {
+  .ddBtn {
+    border: 2px solid blueviolet;
+    -webkit-box-shadow: 0px 0px 15px 0.5px blueviolet;
+            box-shadow: 0px 0px 15px 0.5px blueviolet;
+    background-color: #7a25c9;
+  }
 }
 
-.hitBtn:active {
-  background-color: #09ff00;
-  color: black;
-  -webkit-box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px #09ff00;
-          box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px #09ff00;
-  font-size: 0.9rem;
+@media (min-width: 900px) {
+  .hitBtn:hover,
+  .hitBtn:focus {
+    background-color: #09ff00;
+    color: black;
+    -webkit-box-shadow: 0px 0px 20px 2px #09ff00;
+            box-shadow: 0px 0px 20px 2px #09ff00;
+  }
 }
 
 @media (min-width: 900px) {
   .hitBtn:active {
     font-size: 1.5rem;
+    background-color: #09ff00;
+    color: black;
+    -webkit-box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px #09ff00;
+            box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px #09ff00;
+    font-size: 0.9rem;
   }
 }
 
-.standBtn:hover,
-.standBtn:focus {
-  background-color: red;
-  color: black;
-  -webkit-box-shadow: 0px 0px 20px 2px red;
-          box-shadow: 0px 0px 20px 2px red;
-}
-
-.standBtn:active {
-  background-color: red;
-  color: black;
-  -webkit-box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px red;
-          box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px red;
-  font-size: 0.9rem;
+@media (min-width: 900px) {
+  .standBtn:hover,
+  .standBtn:focus {
+    background-color: red;
+    color: black;
+    -webkit-box-shadow: 0px 0px 20px 2px red;
+            box-shadow: 0px 0px 20px 2px red;
+  }
 }
 
 @media (min-width: 900px) {
   .standBtn:active {
     font-size: 1.5rem;
+    background-color: red;
+    color: black;
+    -webkit-box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px red;
+            box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px red;
+    font-size: 0.9rem;
   }
 }
 
@@ -476,25 +501,24 @@ input[type="text"] {
   }
 }
 
-.ddBtn:hover,
-.ddBtn:focus {
-  background-color: blueviolet;
-  color: black;
-  -webkit-box-shadow: 0px 0px 20px 2px blueviolet;
-          box-shadow: 0px 0px 20px 2px blueviolet;
-}
-
-.ddBtn:active {
-  background-color: blueviolet;
-  color: black;
-  -webkit-box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px blueviolet;
-          box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px blueviolet;
-  font-size: 0.9rem;
+@media (min-width: 900px) {
+  .ddBtn:hover,
+  .ddBtn:focus {
+    background-color: blueviolet;
+    color: black;
+    -webkit-box-shadow: 0px 0px 20px 2px blueviolet;
+            box-shadow: 0px 0px 20px 2px blueviolet;
+  }
 }
 
 @media (min-width: 900px) {
   .ddBtn:active {
     font-size: 1.5rem;
+    background-color: blueviolet;
+    color: black;
+    -webkit-box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px blueviolet;
+            box-shadow: inset 0 0 10px #000000, 0px 0px 20px 2px blueviolet;
+    font-size: 0.9rem;
   }
 }
 

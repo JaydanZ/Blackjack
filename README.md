@@ -1,5 +1,6 @@
 # Blackjack
 A web application that simulates the casino game, Blackjack. Created using Javascript, HTML and SCSS/CSS
+https://javascriptblackjack.netlify.app/
 
 ## Home Screen
 ![image](https://user-images.githubusercontent.com/73255741/162842244-76bc058c-d2cb-40ef-979f-27dfe81ac745.png)
